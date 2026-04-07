@@ -1,11 +1,5 @@
 # Particle41 Project Submission : Aditya Nimje
-```json
-{
-  "message" : "Hello Particle41! I am Aditya Nimje.",
-  "timestamp": "2025-04-07T10:30:00.123456+00:00",
-  "ip": "203.0.113.42"
-}
-```
+
 
 ## Project structure
 
