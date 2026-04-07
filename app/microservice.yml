@@ -30,17 +30,23 @@ spec:
               drop:
                 - ALL
             readOnlyRootFilesystem: true
+          # Gunicorn needs a writable /tmp to spawn workers.
+          # emptyDir gives it an in-memory scratch space while keeping
+          # the rest of the filesystem read-only.
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
           livenessProbe:
             httpGet:
               path: /
               port: 8080
-            initialDelaySeconds: 5
+            initialDelaySeconds: 15
             periodSeconds: 15
           readinessProbe:
             httpGet:
               path: /
               port: 8080
-            initialDelaySeconds: 3
+            initialDelaySeconds: 15
             periodSeconds: 10
           resources:
             requests:
@@ -49,8 +55,13 @@ spec:
             limits:
               cpu: "200m"
               memory: "128Mi"
+      volumes:
+        - name: tmp
+          emptyDir: {}
 
 ---
+# Service: exposes the Deployment inside the cluster (ClusterIP, not LoadBalancer)
+# Use `kubectl port-forward` or an Ingress controller to reach it externally.
 apiVersion: v1
 kind: Service
 metadata:
@@ -66,4 +77,3 @@ spec:
       protocol: TCP
       port: 80
       targetPort: 8080
-
