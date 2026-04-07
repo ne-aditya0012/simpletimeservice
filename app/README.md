@@ -67,7 +67,6 @@ Expected response:
 - **Base**: `python:3.12-alpine` — minimal footprint (~60 MB total)
 - **Multi-stage build** — build tools are not present in the final image
 - **Non-root user**: the container process runs as `appuser` (UID 1000), enforced both in the Dockerfile and in the Kubernetes `securityContext`
-- **Production server**: [Gunicorn](https://gunicorn.org/) with 2 workers instead of Flask's development server
 
 ---
 
