@@ -82,5 +82,4 @@ Expected response:
 
 - The container runs as a non-root user (`runAsNonRoot: true`, `runAsUser: 1000`)
 - All Linux capabilities are dropped (`capabilities.drop: [ALL]`)
-- The root filesystem is read-only (`readOnlyRootFilesystem: true`)
 - No secrets or API keys are present anywhere in this repository
