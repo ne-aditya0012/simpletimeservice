@@ -10,7 +10,7 @@
 ## Project structure
 
 ```
-simpletimeservice/
+simpletimeservice/app/
 ├── app.py             # Flask application
 ├── requirements.txt   # Python dependencies
 ├── Dockerfile         # Multi-stage Docker build (non-root user)
